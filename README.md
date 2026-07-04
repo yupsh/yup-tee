@@ -1,19 +1,9 @@
-# yup-tee
+[![actions](https://github.com/yupsh/yup-tee/actions/workflows/actions.yml/badge.svg)](https://github.com/yupsh/yup-tee/actions/workflows/actions.yml)
+[![ci](https://github.com/yupsh/yup-tee/actions/workflows/ci.yml/badge.svg)](https://github.com/yupsh/yup-tee/actions/workflows/ci.yml)
+[![dockerfiles](https://github.com/yupsh/yup-tee/actions/workflows/dockerfiles.yml/badge.svg)](https://github.com/yupsh/yup-tee/actions/workflows/dockerfiles.yml)
+[![docs](https://github.com/yupsh/yup-tee/actions/workflows/docs.yml/badge.svg)](https://github.com/yupsh/yup-tee/actions/workflows/docs.yml)
+[![go](https://github.com/yupsh/yup-tee/actions/workflows/go.yml/badge.svg)](https://github.com/yupsh/yup-tee/actions/workflows/go.yml)
+[![release](https://github.com/yupsh/yup-tee/actions/workflows/release.yml/badge.svg)](https://github.com/yupsh/yup-tee/actions/workflows/release.yml)
+[![shell](https://github.com/yupsh/yup-tee/actions/workflows/shell.yml/badge.svg)](https://github.com/yupsh/yup-tee/actions/workflows/shell.yml)
 
-```
-NAME:
-   tee - read from standard input and write to standard output and files
-
-USAGE:
-   tee [OPTIONS] [FILE...]
-
-   Copy standard input to each FILE, and also to standard output.
-
-VERSION:
-   dev
-
-GLOBAL OPTIONS:
-   --append, -a  append to the given FILEs, do not overwrite
-   --help, -h    show help
-   --version     print version information and exit
-```
+[docs](https://yupsh.github.io/docs.repl/)
