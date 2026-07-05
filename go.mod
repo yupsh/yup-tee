@@ -3,6 +3,7 @@ module github.com/yupsh/yup-tee
 go 1.26.4
 
 require (
+	github.com/gomatic/go-error v0.3.0
 	github.com/spf13/afero v1.15.0
 	github.com/urfave/cli/v3 v3.10.1
 )

@@ -6,6 +6,7 @@ import (
 	"io"
 	"os"
 	"strings"
+	"syscall"
 	"testing"
 
 	clix "github.com/gloo-foo/cli"
@@ -56,6 +57,9 @@ func TestOpenFiles_ErrorIsWrappedSentinel(t *testing.T) {
 	}
 	if !strings.HasPrefix(err.Error(), string(ErrOpenFile)) {
 		t.Fatalf("message=%q, want prefix %q", err.Error(), string(ErrOpenFile))
+	}
+	if !errors.Is(err, syscall.EPERM) {
+		t.Fatalf("err=%v, want wrapped syscall.EPERM cause", err)
 	}
 }
 

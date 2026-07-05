@@ -2,12 +2,12 @@
 package main
 
 import (
-	"fmt"
 	"io"
 	"os"
 
 	clix "github.com/gloo-foo/cli"
 	command "github.com/gloo-foo/cmd-tee"
+	errs "github.com/gomatic/go-error"
 	"github.com/spf13/afero"
 	urf "github.com/urfave/cli/v3"
 )
@@ -21,15 +21,10 @@ const (
 	flagAppend = "append"
 )
 
-// Error is the package's sentinel error type. Every error the wrapper emits is
-// a constant of this type, making each path testable with errors.Is.
-type Error string
-
-func (e Error) Error() string { return string(e) }
-
-// ErrOpenFile is wrapped (with %w) around the underlying afero failure when a
-// FILE operand cannot be opened for writing.
-const ErrOpenFile Error = "open file"
+// ErrOpenFile is wrapped (via errs.Const.With) around the underlying afero
+// failure when a FILE operand cannot be opened for writing, keeping both the
+// sentinel and the cause matchable with errors.Is.
+const ErrOpenFile errs.Const = "open file"
 
 // synopsis is the multi-line --help usage block; urfave/cli indents it three
 // spaces, so the lines stay flush-left.
@@ -78,7 +73,7 @@ func openFiles(c *urf.Command, fs afero.Fs) ([]any, error) {
 		f, err := fs.OpenFile(c.Args().Get(i), flag, 0o644)
 		if err != nil {
 			closeAll(opened)
-			return nil, fmt.Errorf("%w: %w", ErrOpenFile, err)
+			return nil, ErrOpenFile.With(err)
 		}
 		writers = append(writers, f)
 		opened = append(opened, f)
